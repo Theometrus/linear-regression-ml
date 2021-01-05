@@ -140,6 +140,8 @@ def main():
 
     ret = model(X_train, Y_train, X_test, Y_test, 5000, 0.01)
 
+    print("-----------------------------------------------")
+
     for i in range(Y_test.shape[1]):
       # Courtesy of Stackoverflow
         img = np.transpose(
@@ -157,6 +159,7 @@ def main():
 
         plt.imshow(img)
         plt.show()
+        print("-----------------------------------------------")
 
 
 if __name__ == "__main__":
