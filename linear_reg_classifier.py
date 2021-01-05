@@ -13,8 +13,7 @@ def preprocess(data, desired_label):
     """ Formats the data correctly (and flattens it). """
 
     # Attempt to keep number of yes and no examples equal
-    count_yes = 0
-    count_no = 0
+    counter = 0
     X_original = data[b"data"]
     labels = data[b'labels']
 
@@ -24,10 +23,10 @@ def preprocess(data, desired_label):
     for idx, label in enumerate(labels):
         if label == desired_label:
             Y.append(1)
-            count_yes += 1
-        elif not count_no > count_yes:
+            counter += 1
+        elif counter > 0:
             Y.append(0)
-            count_no += 1
+            counter -= 1
         else:
             continue
 
@@ -80,7 +79,8 @@ def learn(X, Y, w, b, num_iters, learning_rate):
 
         if i % 100 == 0:
             costs.append(cost)
-            print("Iteration {i} cost: {cost}".format(i=i, cost=cost))
+            print("Iteration {i} of {num_iters} cost: {cost}".format(
+                i=i, cost=cost, num_iters=num_iters))
 
     params = {"w": w,
               "b": b}
