@@ -153,9 +153,9 @@ def main():
             print("This is not a {}.".format(name))
 
         if ret["Y_predict_test"][0][i] == 1:
-            print("The Neural Network classified this as a {}.".format(name))
+            print("The AI classified this as a {}.".format(name))
         else:
-            print("The Neural Network classified this as not a {}.".format(name))
+            print("The AI classified this as not a {}.".format(name))
 
         plt.imshow(img)
         plt.show()
